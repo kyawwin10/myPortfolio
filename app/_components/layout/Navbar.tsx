@@ -47,7 +47,7 @@ export default function Navbar() {
             href="#hero"
             className="text-lg font-bold bg-linear-to-r from-[#67d9f0] to-[#00b4d8] bg-clip-text text-transparent"
           >
-            &lt;DevPortfolio /&gt;
+            ZinMoe
           </a>
 
           {/* Desktop nav */}

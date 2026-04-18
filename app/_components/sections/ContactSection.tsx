@@ -1,4 +1,5 @@
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const contactLinks = [
   {
@@ -39,51 +40,54 @@ export default function ContactSection() {
           description="I am open to Mid-level Developer opportunities and collaborations. Feel free to reach out!"
         />
 
-        <div className="max-w-lg mx-auto">
+        <div className="mx-auto max-w-lg">
           {/* CTA card */}
-          <div className="mb-6 rounded-2xl border border-cyan/30 bg-linear-to-br from-purple-shadow to-blue-popsicle p-6 text-center sm:mb-8 sm:p-8">
-            <div className="mb-4 text-4xl">🤝</div>
-            <h3 className="mb-2 text-lg font-bold text-white">
-              Let&apos;s Work Together
-            </h3>
-            <p className="text-[#a0b4cc] text-sm leading-relaxed">
-              Whether it’s a mid-level developer opportunity or just a conversation about web development, I’d love to connect.
-            </p>
-          </div>
+          <Reveal>
+            <div className="section-sheen mb-6 rounded-2xl border border-cyan/30 bg-linear-to-br from-purple-shadow to-blue-popsicle p-6 text-center shadow-[0_20px_56px_rgba(0,0,0,0.2)] sm:mb-8 sm:p-8">
+              <div className="mb-4 text-4xl">🤝</div>
+              <h3 className="mb-2 text-lg font-bold text-white">
+                Let&apos;s Work Together
+              </h3>
+              <p className="text-sm leading-relaxed text-[#a0b4cc]">
+                Whether it’s a mid-level developer opportunity or just a conversation about web development, I’d love to connect.
+              </p>
+            </div>
+          </Reveal>
 
           {/* Contact links */}
           <div className="space-y-3">
-            {contactLinks.map(({ icon, label, value, href }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                className="group flex items-center gap-3 rounded-xl border border-grey-blue-leaf/30 bg-purple-shadow p-4 transition-all hover:border-cyan/50 hover:bg-blue-popsicle sm:gap-4"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-popsicle text-xl transition-colors group-hover:bg-purple-shadow">
-                  {icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs font-medium text-grey-blue-leaf">{label}</p>
-                  <p className="truncate text-sm font-medium text-[#c8d4e8] transition-colors group-hover:text-[#67d9f0]">
-                    {value}
-                  </p>
-                </div>
-                <svg
-                  className="h-4 w-4 shrink-0 text-grey-blue-leaf/50 transition-colors group-hover:text-cyan"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+            {contactLinks.map(({ icon, label, value, href }, index) => (
+              <Reveal key={label} delay={index * 110} variant="left">
+                <a
+                  href={href}
+                  target={href.startsWith("mailto:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                  className="group flex items-center gap-3 rounded-xl border border-grey-blue-leaf/30 bg-purple-shadow p-4 transition-all duration-300 hover:-translate-y-1 hover:border-cyan/50 hover:bg-blue-popsicle sm:gap-4"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-popsicle text-xl transition-colors group-hover:bg-purple-shadow">
+                    {icon}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs font-medium text-grey-blue-leaf">{label}</p>
+                    <p className="truncate text-sm font-medium text-[#c8d4e8] transition-colors group-hover:text-[#67d9f0]">
+                      {value}
+                    </p>
+                  </div>
+                  <svg
+                    className="h-4 w-4 shrink-0 text-grey-blue-leaf/50 transition-colors group-hover:text-cyan"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </Reveal>
             ))}
           </div>
         </div>

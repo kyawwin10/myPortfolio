@@ -1,4 +1,5 @@
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const stats = [
   { value: "4th", label: "Year" },
@@ -17,25 +18,25 @@ export default function AboutSection() {
         />
 
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
-          <div className="flex flex-col items-center gap-5 sm:gap-6">
-            <div className="flex h-40 w-40 items-center justify-center rounded-3xl border border-grey-blue-leaf/30 bg-linear-to-br from-purple-shadow via-blue-popsicle to-[#1a3070] text-6xl shadow-2xl shadow-purple-shadow/50 sm:h-52 sm:w-52 sm:text-7xl">
+          <Reveal className="flex flex-col items-center gap-5 sm:gap-6" variant="left">
+            <div className="float-slow flex h-40 w-40 items-center justify-center rounded-3xl border border-grey-blue-leaf/30 bg-linear-to-br from-purple-shadow via-blue-popsicle to-[#1a3070] text-6xl shadow-2xl shadow-purple-shadow/50 sm:h-52 sm:w-52 sm:text-7xl">
               👨‍💻
             </div>
             <div className="grid w-full max-w-xs grid-cols-3 gap-3 sm:gap-4">
               {stats.map(({ value, label }) => (
                 <div
                   key={label}
-                  className="rounded-xl border border-grey-blue-leaf/30 bg-purple-shadow p-3 text-center sm:p-4"
+                  className="rounded-xl border border-grey-blue-leaf/30 bg-purple-shadow p-3 text-center transition-transform duration-300 hover:-translate-y-1 sm:p-4"
                 >
                   <p className="text-2xl font-extrabold text-white">{value}</p>
                   <p className="mt-0.5 text-xs text-grey-blue-leaf">{label}</p>
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
 
           {/* Text */}
-          <div className="space-y-5 text-sm sm:text-base">
+          <Reveal className="space-y-5 text-sm sm:text-base" delay={140}>
             <p className="text-[#eeeeee] leading-relaxed">
               My frontend journey started with{" "}
               <span className="text-sky-400 font-medium">React</span> and
@@ -70,7 +71,7 @@ export default function AboutSection() {
                 </span>
               ))}
             </div>
-          </div>
+            </Reveal>
         </div>
       </div>
     </section>

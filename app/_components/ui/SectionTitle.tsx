@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 type SectionTitleProps = {
   label: string;
   title: string;
@@ -10,7 +12,7 @@ export default function SectionTitle({
   description,
 }: SectionTitleProps) {
   return (
-    <div className="mb-12 text-center sm:mb-16">
+    <Reveal className="mb-12 text-center sm:mb-16">
       <span className="mb-4 inline-block rounded-full border border-[#00b4d8]/40 bg-[#091f36] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#67d9f0] sm:text-xs">
         {label}
       </span>
@@ -22,6 +24,6 @@ export default function SectionTitle({
           {description}
         </p>
       )}
-    </div>
+    </Reveal>
   );
 }

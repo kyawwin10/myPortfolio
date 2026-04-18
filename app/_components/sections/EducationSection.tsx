@@ -1,4 +1,5 @@
 import SectionTitle from "../ui/SectionTitle";
+import Reveal from "../ui/Reveal";
 
 const courses = [
   "Web Application Development",
@@ -21,9 +22,9 @@ export default function EducationSection() {
           description="Where I study and what I am learning"
         />
 
-        <div className="max-w-3xl mx-auto">
+        <Reveal className="mx-auto max-w-3xl">
           {/* Timeline item */}
-          <div className="relative rounded-2xl border border-[#4f5f76]/30 bg-[#091f36] p-5 transition-colors hover:border-[#00b4d8]/40 sm:p-8">
+          <div className="relative rounded-2xl border border-[#4f5f76]/30 bg-[#091f36] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#00b4d8]/40 sm:p-8">
             {/* Ongoing badge */}
             <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-green-800/60 bg-green-950/60 px-3 py-1 text-xs font-semibold text-green-400 sm:absolute sm:top-6 sm:right-6 sm:mb-0">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
@@ -83,7 +84,7 @@ export default function EducationSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

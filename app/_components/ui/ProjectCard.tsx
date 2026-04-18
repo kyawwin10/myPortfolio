@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type ProjectCardProps = {
   title: string;
@@ -26,7 +27,12 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
   const demoNavigation = ["Home", "Body & Bath", "Men", "Hair", "Makeup", "SkinCare"];
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const repositoryLinks = githubUrls?.length
     ? githubUrls.map((url, index) => ({
@@ -67,7 +73,7 @@ export default function ProjectCard({
 
   return (
     <>
-      <div className="group flex flex-col overflow-hidden rounded-2xl border border-grey-blue-leaf/30 bg-purple-shadow transition-all hover:-translate-y-1 hover:border-grey-blue-leaf/60">
+      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-grey-blue-leaf/30 bg-purple-shadow transition-all hover:-translate-y-1 hover:border-grey-blue-leaf/60">
         <div className={`h-1.5 w-full ${gradientClass}`} />
 
         <div className="flex flex-1 flex-col p-5 sm:p-6">
@@ -155,13 +161,13 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {isGalleryOpen && demoImages && (
+      {isMounted && isGalleryOpen && demoImages && createPortal(
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/55 p-3 backdrop-blur-sm sm:p-4"
           onClick={() => setIsGalleryOpen(false)}
         >
           <div
-            className="relative max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-3xl border border-slate-200 bg-[#c9c9c9] shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+            className="relative max-h-[94vh] w-[70vw] overflow-y-auto rounded-3xl border border-slate-200 bg-[#c9c9c9] shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -176,8 +182,8 @@ export default function ProjectCard({
               <div className="rounded-3xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
                 <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#4f5f76]">
-                      Ecommerce and POS System
+                    <p className="text-md font-semibold text-grey-blue-leaf">
+                      {title}
                     </p>
                   </div>
                   <div className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-600">
@@ -185,7 +191,7 @@ export default function ProjectCard({
                   </div>
                 </div>
 
-                <div className="relative mx-auto flex w-full max-w-5xl items-center justify-center">
+                <div className="relative mx-auto flex w-full items-center justify-center px-4 sm:px-6 lg:px-8">
                   <button
                     type="button"
                     onClick={showPreviousImage}
@@ -200,7 +206,7 @@ export default function ProjectCard({
                       src={demoImages[activeImage]}
                       alt={`${title} demo ${activeImage + 1}`}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 900px"
+                      sizes="70vw"
                       className="object-contain"
                       priority
                     />
@@ -264,7 +270,8 @@ export default function ProjectCard({
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
