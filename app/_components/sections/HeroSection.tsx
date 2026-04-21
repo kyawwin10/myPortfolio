@@ -1,6 +1,29 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Reveal from "../ui/Reveal";
 
 export default function HeroSection() {
+  const [isImageDialogOpen, setIsImageDialogOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isImageDialogOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsImageDialogOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isImageDialogOpen]);
+
   return (
     <section
       id="hero"
@@ -24,17 +47,32 @@ export default function HeroSection() {
 
         {/* Heading */}
         <Reveal delay={120}>
-          <h1 className="mb-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:mb-6 sm:text-5xl md:text-6xl lg:text-7xl">
-            Hi, I&apos;m{" "}
-            <span className="bg-linear-to-r from-[#67d9f0] via-cyan to-grey-blue-leaf bg-clip-text text-transparent">
-              Zin Moe Kyaw
-            </span>
-          </h1>
+          <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+            <h1 className="mb-0 max-w-2xl text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-left sm:text-3xl md:text-4xl lg:text-6xl">
+              Hi, I&apos;m{" "}
+              <span className="bg-linear-to-r from-[#67d9f0] via-cyan to-grey-blue-leaf bg-clip-text text-transparent">
+                Zin Moe Kyaw
+              </span>
+            </h1>
+
+            <button
+              type="button"
+              onClick={() => setIsImageDialogOpen(true)}
+              className="group shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              aria-label="Open profile image dialog"
+            >
+              <img
+                src="/image/13548.jpg"
+                alt="profile"
+                className="h-32 w-32 rounded-full object-cover shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-transform duration-300 group-hover:scale-105 sm:h-40 sm:w-40 md:h-48 md:w-48"
+              />
+            </button>
+          </div>
         </Reveal>
 
         {/* Subtitle */}
         <Reveal delay={220}>
-          <p className="mb-3 text-lg font-semibold text-[#c8d4e8] sm:mb-4 sm:text-xl md:text-2xl">
+          <p className="m-6 text-lg font-semibold text-[#c8d4e8] sm:mb-4 sm:text-xl md:text-2xl">
             1st Year Web Engineering Student
           </p>
         </Reveal>
@@ -89,6 +127,38 @@ export default function HeroSection() {
           </div>
         </Reveal>
       </div>
+
+      {isImageDialogOpen ? (
+        <div
+          className="fixed inset-0 z-200 flex items-center justify-center bg-[#020617]/80 px-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Profile image preview"
+          onClick={() => setIsImageDialogOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-[2rem] sm:p-6"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsImageDialogOpen(false)}
+              className="absolute right-5 top-6 flex h-10 w-10 items-center justify-center"
+              aria-label="Close profile image dialog"
+            >
+              <img src="/image/remove-svgrepo-com.svg" alt="icon" />
+            </button>
+
+            <div className="overflow-hidden rounded-[1.5rem] border border-cyan/20 bg-[#0b1730] p-2">
+              <img
+                src="/image/13548.jpg"
+                alt="profile"
+                className="h-auto w-full rounded-[1.2rem] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }
