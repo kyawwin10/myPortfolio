@@ -143,10 +143,14 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={() => setIsImageDialogOpen(false)}
-              className="absolute right-5 top-6 flex h-10 w-10 items-center justify-center"
+              className="absolute right-1 top-1 flex h-9 w-9 items-center justify-center hover:scale-105 sm:right-2 sm:top-6 sm:h-14 sm:w-20 sm:p-2"
               aria-label="Close profile image dialog"
             >
-              <img src="/image/remove-svgrepo-com.svg" alt="icon" />
+              <img
+                src="/image/remove-svgrepo-com.svg"
+                alt="icon"
+                className="h-full w-full"
+              />
             </button>
 
             <div className="overflow-hidden rounded-[1.5rem] border border-cyan/20 bg-[#0b1730] p-2">
