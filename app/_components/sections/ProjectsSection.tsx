@@ -27,7 +27,7 @@ const projects = [
     githubUrl: "https://github.com/kyawwin10/RM-ATM-API-Project",
   },
   {
-    title: "Ecommerce & POS System",
+    title: "Ecommerce and POS System",
     description:
       "I have also worked on personal projects, including developing an E-commerce system and a POS (Point of Sale) system. Through these projects, I gained hands-on experience in building real-world applications, managing product data, handling transactions, and designing user-friendly interfaces.",
     tech: ["React", "TypeScript", "Shadcn", "Tanstack Query", "C# ASP.NET Core", "MS SQL"],
@@ -43,7 +43,11 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24">
+    <section id="projects" className="relative py-16 sm:py-20 lg:py-24">
+      <div
+        id="projects-gallery-portal"
+        className="pointer-events-none absolute inset-0 z-40"
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           label="My Projects"
@@ -54,7 +58,7 @@ export default function ProjectsSection() {
         <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (
             <Reveal key={project.title} delay={index * 140} variant="scale" className="h-full">
-              <ProjectCard {...project} />
+              <ProjectCard {...project} galleryContainerId="projects-gallery-portal" />
             </Reveal>
           ))}
         </div>

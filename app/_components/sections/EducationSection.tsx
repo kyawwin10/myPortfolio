@@ -33,8 +33,8 @@ export default function EducationSection() {
 
             <div className="flex flex-col gap-5 sm:flex-row">
               {/* Icon */}
-              <div className="mt-1 flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#4f5f76]/30 bg-[#0f2862] text-2xl">
-                🎓
+              <div className="flex h-14 w-14 shrink-0 items-center justify-center text-xl">
+                <img src="/image/graduate-icon.png" alt="Graduate Icon" className="rounded-md h-12 w-12 object-contain" />
               </div>
 
               {/* Content */}

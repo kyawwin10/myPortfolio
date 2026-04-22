@@ -19,8 +19,8 @@ export default function AboutSection() {
 
         <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
           <Reveal className="flex flex-col items-center gap-5 sm:gap-6" variant="left">
-            <div className="float-slow flex h-40 w-40 items-center justify-center rounded-3xl border border-grey-blue-leaf/30 bg-linear-to-br from-purple-shadow via-blue-popsicle to-[#1a3070] text-6xl shadow-2xl shadow-purple-shadow/50 sm:h-52 sm:w-52 sm:text-7xl">
-              👨‍💻
+            <div className="float-slow flex h-40 w-40 items-center justify-center rounded-3xl border border-grey-blue-leaf/30 bg-[#9197ae] from-purple-shadow via-blue-popsicle to-[#1a3070] text-6xl shadow-2xl shadow-purple-shadow/50 sm:h-52 sm:w-52 sm:text-7xl">
+              <img src="/image/computer-icon.png" alt="Computer Icon" />
             </div>
             <div className="grid w-full max-w-xs grid-cols-3 gap-3 sm:gap-4">
               {stats.map(({ value, label }) => (
@@ -57,16 +57,16 @@ export default function AboutSection() {
             
             <div className="flex flex-wrap gap-2.5 pt-2 sm:gap-3">
               {[
-                { emoji: "🎓", label: "Web Engineering" },
-                { emoji: "📍", label: "Yangon" },
-                { emoji: "📅", label: "Expected grad: 2027" },
-                { emoji: "🌐", label: "Full-Stack Dev" },
+                { emoji: "/image/graduation-icon.png", label: "Web Engineering" },
+                { emoji: "/image/pin-location-icon.png", label: "Yangon" },
+                { emoji: "/image/date-and-time-icon.png", label: "Expected grad: 2027" },
+                { emoji: "/image/developer-icon.png", label: "Full-Stack Dev" },
               ].map(({ emoji, label }) => (
                 <span
                   key={label}
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-grey-blue-leaf/30 bg-purple-shadow px-3 py-1.5 text-xs text-grey-blue-leaf sm:text-sm"
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-grey-blue-leaf/30 bg-[#9197ae] px-3 py-1.5 text-xs text-grey-blue-leaf sm:text-sm"
                 >
-                  <span>{emoji}</span>
+                  <img src={emoji} alt="" className="h-4 w-4 object-contain" />
                   {label}
                 </span>
               ))}

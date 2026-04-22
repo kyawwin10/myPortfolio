@@ -13,6 +13,7 @@ type ProjectCardProps = {
   githubUrls?: string[];
   demoUrl?: string;
   demoImages?: string[];
+  galleryContainerId?: string;
 };
 
 export default function ProjectCard({
@@ -24,15 +25,20 @@ export default function ProjectCard({
   githubUrls,
   demoUrl,
   demoImages,
+  galleryContainerId,
 }: ProjectCardProps) {
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [activeImage, setActiveImage] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
   const demoNavigation = ["Home", "Body & Bath", "Men", "Hair", "Makeup", "SkinCare"];
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (galleryContainerId) {
+      setPortalTarget(document.getElementById(galleryContainerId));
+    } else {
+      setPortalTarget(document.body);
+    }
+  }, [galleryContainerId]);
 
   const repositoryLinks = githubUrls?.length
     ? githubUrls.map((url, index) => ({
@@ -139,7 +145,7 @@ export default function ProjectCard({
               <button
                 type="button"
                 onClick={openGallery}
-                className="flex items-center gap-1.5 rounded-full border border-slate-300 bg-[#ffff00] px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-slate-50 hover:text-slate-900"
+                className="flex items-center gap-1.5 rounded-full bg-[#2596be] px-3 py-1.5 text-xs font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-[#eab676] hover:text-slate-900"
               >
                 <svg
                   className="h-4 w-4"
@@ -161,25 +167,29 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {isMounted && isGalleryOpen && demoImages && createPortal(
+      {isGalleryOpen && demoImages && portalTarget && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/55 p-3 backdrop-blur-sm sm:p-4"
+          className="pointer-events-auto absolute inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-900/55 p-3 backdrop-blur-sm sm:p-4"
           onClick={() => setIsGalleryOpen(false)}
         >
           <div
-            className="relative max-h-[94vh] w-[70vw] overflow-y-auto rounded-3xl border border-slate-200 bg-[#c9c9c9] shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
+            className="relative my-auto w-[70vw] overflow-y-auto rounded-3xl border border-slate-200 bg-[#c9c9c9] shadow-[0_24px_80px_rgba(15,23,42,0.18)]"
             onClick={(event) => event.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setIsGalleryOpen(false)}
-              className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-lg font-semibold text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 sm:right-4 sm:top-4"
+              className="absolute top-0 z-20 flex h-10 w-10 sm:right-4 sm:top-4"
               aria-label="Close live demo"
             >
-              ×
+              <img
+                src="/image/remove-svgrepo-com.svg"
+                alt="icon"
+                className="mb-4 mt-[-6px] ml-3 h-full w-full"
+              />
             </button>
-            <div className="bg-white px-4 py-4 sm:px-6 sm:py-6">
-              <div className="rounded-3xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
+            <div className="bg-[#c2c2c2] border-none px-4 py-4 sm:px-6 sm:py-6">
+              <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:p-5">
                 <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <p className="text-md font-semibold text-grey-blue-leaf">
@@ -195,13 +205,13 @@ export default function ProjectCard({
                   <button
                     type="button"
                     onClick={showPreviousImage}
-                    className="absolute left-2 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-2xl text-slate-700 shadow-sm transition-colors hover:bg-slate-100 sm:left-3"
+                    className="absolute left-2 z-10 flex h-10 w-10 items-center justify-center sm:left-3"
                     aria-label="Show previous demo image"
                   >
-                    ‹
+                    <img src="/image/left-arrow-circle-svgrepo-com.svg" alt="icon" />
                   </button>
 
-                  <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-slate-200 bg-white sm:h-72 md:h-96 lg:h-128">
+                  <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-[#c2c2c2] bg-white sm:h-72 md:h-96 lg:h-128">
                     <Image
                       src={demoImages[activeImage]}
                       alt={`${title} demo ${activeImage + 1}`}
@@ -215,10 +225,10 @@ export default function ProjectCard({
                   <button
                     type="button"
                     onClick={showNextImage}
-                    className="absolute right-2 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-2xl text-slate-700 shadow-sm transition-colors hover:bg-slate-100 sm:right-3"
+                    className="absolute right-2 z-10 flex h-10 w-10 items-center justify-center sm:right-3"
                     aria-label="Show next demo image"
                   >
-                    ›
+                    <img src="/image/right-arrow.svg" alt="icon" />
                   </button>
                 </div>
 
@@ -230,8 +240,8 @@ export default function ProjectCard({
                       onClick={() => setActiveImage(index)}
                       className={`h-2.5 rounded-full transition-all ${
                         activeImage === index
-                          ? "w-7 bg-slate-900"
-                          : "w-2.5 bg-slate-300 hover:bg-slate-400"
+                          ? "w-7 bg-[#2a7cbf]"
+                          : "w-2.5 bg-[#063970] hover:bg-slate-400"
                       }`}
                       aria-label={`Show demo image ${index + 1}`}
                     />
@@ -244,10 +254,10 @@ export default function ProjectCard({
                       key={image}
                       type="button"
                       onClick={() => setActiveImage(index)}
-                      className={`overflow-hidden rounded-2xl border bg-white text-left transition-all ${
+                      className={`overflow-hidden rounded-xl border border-double bg-white text-left transition-all ${
                         activeImage === index
-                          ? "border-slate-900 shadow-sm"
-                          : "border-slate-200 hover:border-slate-300"
+                          ? "border-[#2a7cbf] shadow-sm"
+                          : "border-[#c2c2c2] hover:border-[#a3a3a3]"
                       }`}
                     >
                       <div className="relative aspect-4/3 w-full overflow-hidden bg-slate-50">
@@ -271,7 +281,7 @@ export default function ProjectCard({
             </div>
           </div>
         </div>,
-        document.body,
+        portalTarget,
       )}
     </>
   );
