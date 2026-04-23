@@ -48,9 +48,9 @@ export default function HeroSection() {
         {/* Heading */}
         <Reveal delay={120}>
           <div className="flex flex-col items-center justify-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
-            <h1 className="mb-0 max-w-2xl text-2xl font-extrabold leading-tight tracking-tight text-white sm:text-left sm:text-3xl md:text-4xl lg:text-6xl">
+            <h1 className="mb-0 max-w-2xl text-2xl font-extrabold leading-tight tracking-tight text-[#c9c9c9] sm:text-left sm:text-3xl md:text-4xl lg:text-6xl">
               Hi, I&apos;m{" "}
-              <span className="bg-linear-to-r from-[#67d9f0] via-cyan to-grey-blue-leaf bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#51bcd1] via-cyan to-[#758d8f] bg-clip-text text-transparent">
                 Zin Moe Kyaw
               </span>
             </h1>
@@ -73,16 +73,18 @@ export default function HeroSection() {
         {/* Subtitle */}
         <Reveal delay={220}>
           <p className="m-6 text-lg font-semibold text-[#c8d4e8] sm:mb-4 sm:text-xl md:text-2xl">
-            1st Year Web Engineering Student
+            Web Engineering Student
           </p>
         </Reveal>
 
         <Reveal delay={300}>
           <p className="mx-auto mb-10 max-w-2xl text-sm leading-relaxed text-[#eeeeee] sm:mb-12 sm:text-base md:text-lg">
             I build modern web applications using{" "}
-            <span className="font-medium text-sky-400">React</span>,{" "}
-            <span className="font-medium text-emerald-400">Vue.js</span>, and{" "}
-            <span className="font-medium text-violet-400">C# ASP.NET Core Web API</span>.
+            <span className="font-medium text-[#787CB5]">PHP</span>, {""}
+            <span className="font-medium text-[#FFD43B]">Python</span>, and{" "}
+            <span className="font-medium text-[#092E20]">Django</span>, and{" "}
+            <span className="font-medium text-[#F0DB4F]">Javascript</span>, and{" "}
+            <span className="font-medium text-sky-400">React.js</span>.
             Passionate about clean code and great user experiences.
           </p>
         </Reveal>
@@ -92,7 +94,7 @@ export default function HeroSection() {
           <div className="mb-12 flex flex-col items-stretch justify-center gap-3 sm:mb-16 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
             <a
               href="#projects"
-              className="rounded-full bg-cyan px-6 py-3 text-center text-sm font-semibold text-white shadow-[0_18px_40px_rgba(0,180,216,0.24)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#009ab8] sm:px-8 sm:py-3.5"
+              className="rounded-full bg-[#00b4d8]/90 px-6 py-3 text-center text-sm font-semibold text-[#ffffff] transition-all duration-300 hover:text-[#00b4d8] hover:bg-[#ffffff]/90 sm:px-8 sm:py-3.5"
             >
               View My Projects
             </a>
@@ -107,6 +109,7 @@ export default function HeroSection() {
 
         {/* Tech pills */}
         <Reveal delay={460}>
+          <h3 className="mb-4 text-[#c9c9c9] font-bold">Workplace Skill</h3>
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
             {[
               { label: "JavaScript", color: "text-yellow-400 border-sky-900/60 bg-[#091f36]" },

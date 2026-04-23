@@ -79,14 +79,14 @@ export default function ProjectCard({
 
   return (
     <>
-      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-grey-blue-leaf/30 bg-purple-shadow transition-all hover:-translate-y-1 hover:border-grey-blue-leaf/60">
+      <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#c9c9c9] bg-purple-shadow transition-all hover:-translate-y-1 hover:border-grey-blue-leaf/60">
         <div className={`h-1.5 w-full ${gradientClass}`} />
 
         <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h3 className="mb-2 text-lg font-bold text-white transition-colors group-hover:text-[#67d9f0]">
+          <h3 className="mb-2 text-lg font-bold text-[#c9c9c9] transition-colors group-hover:text-[#67d9f0]">
             {title}
           </h3>
-          <p className="mb-4 flex-1 text-sm leading-relaxed text-[#a0b4cc]">
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-[#c9c9c9]">
             {description}
           </p>
 
@@ -94,7 +94,7 @@ export default function ProjectCard({
             {tech.map((item) => (
               <span
                 key={item}
-                className="rounded-full border border-grey-blue-leaf/30 bg-blue-popsicle px-2.5 py-1 text-xs font-medium text-[#c8d4e8]"
+                className="rounded-full border bg-[#c9c9c9] px-2.5 py-1 text-xs font-medium text-[#000000]"
               >
                 {item}
               </span>
@@ -108,7 +108,7 @@ export default function ProjectCard({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-medium text-grey-blue-leaf transition-colors hover:text-white"
+                className="flex items-center gap-1.5 text-xs font-medium text-[#ffffcc] transition-colors hover:text-white"
               >
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58v-2.03c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.43 11.43 0 013 .4c1.02.01 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z" />

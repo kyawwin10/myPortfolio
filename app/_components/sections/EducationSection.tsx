@@ -39,7 +39,7 @@ export default function EducationSection() {
 
               {/* Content */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-lg font-bold text-white leading-snug sm:pr-28">
+                <h3 className="text-lg font-bold text-[#c9c9c9] sm:pr-28">
                   BA in HISTORY
                 </h3>
                 <p className="text-[#67d9f0] font-semibold text-sm mt-1">
@@ -47,18 +47,18 @@ export default function EducationSection() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 mb-5">
-                  <span className="text-xs text-[#4f5f76]">2019 – Present</span>
-                  <span className="text-[#4f5f76]/40 text-xs">·</span>
-                  <span className="text-xs text-[#4f5f76]">Final Year</span>
-                  <span className="text-[#4f5f76]/40 text-xs">·</span>
-                  <span className="text-xs text-[#4f5f76]">Expected Graduation: 2027</span>
+                  <span className="text-xs text-[#c9c9c9]">2019 – Present</span>
+                  <span className="text-[#c9c9c9] text-xs">·</span>
+                  <span className="text-xs text-[#c9c9c9]">Final Year</span>
+                  <span className="text-[#c9c9c9] text-xs">·</span>
+                  <span className="text-xs text-[#c9c9c9]">Expected Graduation: 2027</span>
                 </div>
 
-                <h3 className="text-lg font-bold text-white leading-snug sm:pr-28">
+                <h3 className="text-lg font-bold text-[#c9c9c9] leading-snug sm:pr-28">
                   Page Myanmar(Web Engineering School)
                 </h3>
 
-                <p className="mt-5 mb-6 text-sm leading-relaxed text-[#a0b4cc] sm:mt-6">
+                <p className="mt-5 mb-6 text-sm leading-relaxed text-[#c9c9c9] sm:mt-6">
                   Currently in my fourth year, gaining deep knowledge in modern
                   web development — from designing RESTful APIs with C# ASP.NET
                   Core to building reactive UIs with React and Vue.js. The
@@ -67,14 +67,14 @@ export default function EducationSection() {
 
                 {/* Relevant Courses */}
                 <div>
-                  <p className="text-xs font-semibold text-[#4f5f76] uppercase tracking-wider mb-3">
+                  <p className="text-xs font-semibold text-[#c9c9c9] uppercase tracking-wider mb-3">
                     Relevant Courses
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {courses.map((course) => (
                       <span
                         key={course}
-                        className="rounded-full border border-[#4f5f76]/30 bg-[#0f2862] px-2.5 py-1 text-xs leading-snug text-[#4f5f76]"
+                        className="rounded-full bg-[#c9c9c9] px-2.5 py-1 text-xs leading-snug text-[#000000]"
                       >
                         {course}
                       </span>

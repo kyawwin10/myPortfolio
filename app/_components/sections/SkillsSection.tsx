@@ -56,8 +56,8 @@ export default function SkillsSection() {
         <div className="space-y-6 sm:space-y-8 lg:space-y-10">
           {skillCategories.map((category, index) => (
             <Reveal key={category.title} delay={index * 120}>
-              <div className="rounded-2xl border border-grey-blue-leaf/30 bg-purple-shadow/95 p-4 shadow-[0_12px_36px_rgba(0,0,0,0.16)] transition-transform duration-300 hover:-translate-y-1 sm:p-6">
-                <h3 className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#c8d4e8]">
+              <div className="rounded-2xl border border-[#c9c9c9] bg-purple-shadow/95 p-4 shadow-[0_12px_36px_rgba(0,0,0,0.16)] transition-transform duration-300 hover:-translate-y-1 sm:p-6">
+                <h3 className="mb-5 flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-[#c9c9c9]">
                   <Image src={category.Image} alt={category.title} width={24} height={24} className="bg-[#c2c2c2] p-1 rounded-sm" />
                   {category.title}
                 </h3>
